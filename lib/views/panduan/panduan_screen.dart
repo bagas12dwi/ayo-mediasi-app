@@ -22,27 +22,58 @@ class PanduanScreen extends StatelessWidget {
               children: [
                 buildPage(
                   context,
+                  'Tentang Aplikasi',
+                  'Ayo Mediasi adalah aplikasi yang memudahkan individu, mediator, dan profesional hukum untuk memahami dan menerapkan undang-undang mediasi. Dengan akses cepat ke peraturan lengkap, penjelasan rinci, dan sumber daya tambahan, aplikasi ini mendukung praktik mediasi yang efektif dan sesuai hukum.',
+                  'logo.png',
+                  true,
+                ),
+                buildPage(
+                  context,
                   'Step 1',
-                  'Description of step 1',
-                  Icons.accessibility,
+                  'Berikut merupakan tampilan menu utama dari aplikasi, tersedia menu materi, konsultasi, data tim, panduan, mitra dan FAQ',
+                  '1.png',
+                  false,
                 ),
                 buildPage(
                   context,
                   'Step 2',
-                  'Description of step 2',
-                  Icons.account_balance,
+                  'Ketika masuk menu materi akan terdapat tampilan seperti ini. Pada halaman ini berisi materi perundang - undangan tentang mediasi',
+                  '2.png',
+                  false,
                 ),
                 buildPage(
                   context,
                   'Step 3',
-                  'Description of step 3',
-                  Icons.alarm,
+                  'Setelah memilih materi undang - undang maka akan terdapat tampilan seperti ini. Disini anda bisa mencari kata - kata sesuai dengan gambar petunjuk',
+                  '3.png',
+                  false,
+                ),
+                buildPage(
+                  context,
+                  'Step 4',
+                  'Berikut merupakan tampilan menu konsultasi. Dihalaman ini anda bisa mengirimkan email untuk konsultasi dengan tim',
+                  '4.png',
+                  false,
+                ),
+                buildPage(
+                  context,
+                  'Step 5',
+                  'Ini merupakan tampilan menu data tim. berikut merupakan data tim Ayo Mediasi',
+                  '5.png',
+                  false,
+                ),
+                buildPage(
+                  context,
+                  'Step 6',
+                  "Menu FAQ ini menyajikan pertanyaan dan jawaban yang sering diajukan, membantu Anda menemukan informasi dengan cepat.",
+                  '6.png',
+                  false,
                 ),
                 buildLastPage(
                   context,
-                  'Step 4',
-                  'Description of step 4',
-                  Icons.assessment,
+                  'Step 7',
+                  'Berikut merupakan tampilan jawaban dari pertanyaan yang anda pilih',
+                  '7.png',
                 ),
               ],
             ),
@@ -54,17 +85,19 @@ class PanduanScreen extends StatelessWidget {
     );
   }
 
-  Widget buildLastPage(BuildContext context, String title, String description, IconData icon) {
+  Widget buildLastPage(BuildContext context, String title, String description, String imgPath) {
     return Container(
       padding: EdgeInsets.all(16.h),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(
-            icon,
-            size: 100,
-            color: Theme.of(context).primaryColor,
+          Container(
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * .5,
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage('assets/panduan/$imgPath'))
+            ),
           ),
           SizedBox(height: 30.h),
           Text(
@@ -82,7 +115,6 @@ class PanduanScreen extends StatelessWidget {
               fontSize: 18.h,
             ),
           ),
-          SizedBox(height: 30.h),
           const Spacer(),
           ElevatedButton(
             onPressed: () {
@@ -96,18 +128,21 @@ class PanduanScreen extends StatelessWidget {
     );
   }
 
-  Widget buildPage(BuildContext context, String title, String description, IconData icon) {
+  Widget buildPage(BuildContext context, String title, String description, String imgPath, bool isFirstPage) {
     return Container(
       padding: EdgeInsets.all(16.h),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(
-            icon,
-            size: 100,
-            color: Theme.of(context).primaryColor,
+          Container(
+            width: double.infinity,
+            height: isFirstPage ? MediaQuery.of(context).size.height * .3 : MediaQuery.of(context).size.height * .5,
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage('assets/panduan/$imgPath'))
+            ),
           ),
+          // Image.asset('assets/panduan/$imgPath'),
           SizedBox(height: 30.h),
           Text(
             title,
@@ -132,7 +167,7 @@ class PanduanScreen extends StatelessWidget {
   Widget buildIndicator(int currentIndex) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(4, (index) {
+      children: List.generate(8, (index) {
         return Container(
           margin: EdgeInsets.symmetric(horizontal: 4.h),
           width: currentIndex == index ? 12.0 : 8.0,

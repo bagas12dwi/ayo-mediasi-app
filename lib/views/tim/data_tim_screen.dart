@@ -29,7 +29,7 @@ class DataTimScreen extends StatelessWidget {
                   tanggal: 'Blitar, 13 April 2000',
                   email: 'shinfani.kwrdni@gmail.com',
                   phone: '0895396220458',
-                  profilPath: 'assets/yana.jpg',
+                  profilPath: 'assets/shinfani.jpeg',
                 ),
               ),
               GestureDetector(
